@@ -16,7 +16,7 @@ The spreadsheet is created on SQL Querry table.
 
 # Polymorphism 
 To make model data various, the data is extended with various types such as employee or student.
-Each of types contain different feature based on the job characteristics.
+Each of types contain different features based on the job characteristics.
 
 ![guide2](./img/Overriding.png)
 
