@@ -5,6 +5,7 @@ interface Job {
 	public int search(String name);
 	public void edit(String name, String job);
 	public void remove(String name);	
+	public void print();
 }
 
 public class Person  implements Job {
@@ -62,7 +63,7 @@ public class Person  implements Job {
 		}
 	}//remove
 	
-	void print() {
+	public void print() {
 		dao.print();
 	}//print
 	
