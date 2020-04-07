@@ -197,7 +197,6 @@ public class PersonDAO {
             pstmt.setString(5, null);
             pstmt.setString(6, null);
             pstmt.setString(7, null);
-
             pstmt.setString(8,person.getName());
             
             return pstmt.executeUpdate();
@@ -218,11 +217,8 @@ public class PersonDAO {
             pstmt.setString(4, stud.getSchool());
             pstmt.setString(5, stud.getGrades());
             pstmt.setString(6, null);
-
             pstmt.setString(7, null);
-
-            pstmt.setString(8,stud.getName());
-            
+            pstmt.setString(8,stud.getName());        
             
             return pstmt.executeUpdate();
           
@@ -241,7 +237,6 @@ public class PersonDAO {
             pstmt.setString(3, employee.getAddr());
             pstmt.setString(4, employee.getCompany());
             pstmt.setString(5, null);
-
             pstmt.setString(6, null);
             pstmt.setInt(7, employee.getSalary());
             pstmt.setString(8,employee.getName());
