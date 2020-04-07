@@ -18,9 +18,7 @@ public class PersonDAO {
 	            
 	            Class.forName("com.mysql.jdbc.Driver");
 	            conn = DriverManager.getConnection(dbURL,dbID,dbPassword);
-	            System.out.println("Connected");
 	        }catch(Exception e){
-	        	System.out.println("No Connection");
 	            e.printStackTrace();
 	        }
     }
@@ -70,7 +68,7 @@ public class PersonDAO {
     public int create(Person person){
     	int idGenerator = getRandomNumberInRange(1000,9999);
     	
-        String SQL ="INSERT INTO information VALUES(?, ?, ?, ?, ?)";
+        String SQL ="INSERT INTO information VALUES(?, ?, ?, ?, ?,?,?,?,?)";
         try{
             pstmt = conn.prepareStatement(SQL);
             pstmt.setInt(1,idGenerator);
@@ -78,7 +76,11 @@ public class PersonDAO {
             pstmt.setString(3,person.getName());
             pstmt.setString(4,person.getPhone());
             pstmt.setString(5,person.getAddr());
-
+            pstmt.setString(6,null);
+            pstmt.setString(7,null);
+            pstmt.setString(8,null);
+            pstmt.setString(9,null);
+            
             System.out.println(idGenerator);
             System.out.println("Signup Person: "+person.getName());
 
@@ -93,7 +95,7 @@ public class PersonDAO {
     public int create(Student student){
     	int idGenerator = getRandomNumberInRange(1000,9999);
     	
-        String SQL ="INSERT INTO information VALUES(?, ?, ?, ?, ?,?,?)";
+        String SQL ="INSERT INTO information VALUES(?, ?, ?, ?, ?,?,?,?,?)";
         try{
             pstmt = conn.prepareStatement(SQL);
             pstmt.setInt(1,idGenerator);
@@ -103,6 +105,8 @@ public class PersonDAO {
             pstmt.setString(5,student.getAddr());
             pstmt.setString(6,student.getSchool());
             pstmt.setString(7,student.getGrades());
+            pstmt.setString(8,null);
+            pstmt.setString(9,null);
 
             System.out.println(idGenerator);
             System.out.println("Signup Student: "+student.getName());
@@ -182,13 +186,19 @@ public class PersonDAO {
     }    
     
     public int update(Person person, String name) {
-    	String SQL = "UPDATE information SET job=?, phone=?, addr=? WHERE name=?";
+    	String SQL = "UPDATE information SET job=?, phone=?, addr=?, school=?,grades=?, company=?,salary=? WHERE name=?";
         try {
             pstmt = conn.prepareStatement(SQL);
         	pstmt.setString(1, person.getJob());
         	pstmt.setString(2, person.getPhone());
             pstmt.setString(3, person.getAddr());
             pstmt.setString(4,person.getName());
+            pstmt.setString(4, null);
+            pstmt.setString(5, null);
+            pstmt.setString(6, null);
+            pstmt.setString(7, null);
+
+            pstmt.setString(8,person.getName());
             
             return pstmt.executeUpdate();
           
@@ -199,7 +209,7 @@ public class PersonDAO {
     }
     
     public int update(Student stud, String name) {
-    	String SQL = "UPDATE information SET job=?, phone=?, addr=?, school=?,grades=? WHERE name=?";
+    	String SQL = "UPDATE information SET job=?, phone=?, addr=?, school=?,grades=?, company=?,salary=? WHERE name=?";
         try {
             pstmt = conn.prepareStatement(SQL);
         	pstmt.setString(1, stud.getJob());
@@ -207,7 +217,12 @@ public class PersonDAO {
             pstmt.setString(3, stud.getAddr());
             pstmt.setString(4, stud.getSchool());
             pstmt.setString(5, stud.getGrades());
-            pstmt.setString(6,stud.getName());
+            pstmt.setString(6, null);
+
+            pstmt.setString(7, null);
+
+            pstmt.setString(8,stud.getName());
+            
             
             return pstmt.executeUpdate();
           
@@ -218,15 +233,18 @@ public class PersonDAO {
     }
     
     public int update(Employee employee, String name) {
-    	String SQL = "UPDATE information SET job=?, phone=?, addr=?, company=?,salary=? WHERE name=?";
+    	String SQL = "UPDATE information SET job=?, phone=?, addr=?, school=?,grades=?, company=?,salary=? WHERE name=?";
         try {
             pstmt = conn.prepareStatement(SQL);
         	pstmt.setString(1, employee.getJob());
         	pstmt.setString(2, employee.getPhone());
             pstmt.setString(3, employee.getAddr());
             pstmt.setString(4, employee.getCompany());
-            pstmt.setInt(5, employee.getSalary());
-            pstmt.setString(6,employee.getName());
+            pstmt.setString(5, null);
+
+            pstmt.setString(6, null);
+            pstmt.setInt(7, employee.getSalary());
+            pstmt.setString(8,employee.getName());
             
             return pstmt.executeUpdate();
           

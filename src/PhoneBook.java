@@ -4,8 +4,25 @@ import java.util.*;
 public class PhoneBook {
 	
 	static Scanner keyboard = new Scanner(System.in);
+	private static Person person;
 	
-	public static void Menu(){
+	
+	public static String whichJob() {
+		System.out.println("Type your Job : ");
+		 String job = keyboard.nextLine();	
+		 if(job.equalsIgnoreCase("student")) {
+			 person = new Student();
+			 return "Student";
+		 }else if(job.equalsIgnoreCase("employee")) {
+			 person = new Employee();
+			 return "employee";
+		 }else {
+			 person = new Person();
+			 return job;
+		 }
+	}
+	
+	public static void menu(){
 	  System.out.println("Type your option..");
 	  System.out.println("1. Insert");
 	  System.out.println("2. Edit");
@@ -16,28 +33,32 @@ public class PhoneBook {
 	}
 	 
 	 public static void main(String arr[]){
-		 CRUD pbdb = new CRUD();
-		 
+		 person = new Person();
 		 while(true){
-		   Menu();
+		   menu();
 		   int input=keyboard.nextInt();
 		   keyboard.nextLine();
 		  
 		   switch(input){
 		   case 1://insert
-		     pbdb.insert();
+			 String jobInfo = whichJob();
+		     person.insert(jobInfo);
 		     break;
 		   case 2://edit
 			 System.out.println("Type name to edit :");
-			 String name1 = keyboard.nextLine();
-			 pbdb.edit(name1);
+			 String name = keyboard.nextLine();
+			 if(person.search(name)==-1) {
+		    	 System.out.println("Cannot find the details");
+		     }else {
+		    	 String job = whichJob();
+				 person.edit(name, job);
+		     }
+			 
 			 break;
 		   case 3://Search
 			 System.out.println("Type name to search :");
-			 String name2 = keyboard.nextLine();
-			 System.out.println("Type job : ");
-			 String job = keyboard.nextLine();
-		     if(pbdb.search(name2, job)==-1) {
+			 String nameSearch = keyboard.nextLine();
+		     if(person.search(nameSearch)==-1) {
 		    	 System.out.println("Cannot find the details");
 		     }else {
 		    	 
@@ -45,11 +66,12 @@ public class PhoneBook {
 		     break;
 		   case 4://remove
 			 System.out.print("Type name to remove :");
-			 String name = keyboard.nextLine();
-		     pbdb.remove(name);
+			 String nameRemove = keyboard.nextLine();
+
+		     person.remove(nameRemove);
 		     break;
 		   case 5://print
-			 pbdb.print();
+			 person.print();
 			 break;  
 		   case 6: System.out.println("Goodbye.");
 		     return;
@@ -57,4 +79,5 @@ public class PhoneBook {
 		  }//while
 	 }//main
 }
+
 
