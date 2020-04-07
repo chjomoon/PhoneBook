@@ -1,5 +1,5 @@
 # PhoneBook
-A telephone directory is connected to Database(mySQL).
+#### Telephone directory connected to Database(mySQL).
 <br>There are three types of jobs such as student, employee, and others as a person.
 Each jobs have different information according to its features that can save different data,
 displaying various information.
@@ -7,12 +7,12 @@ User can create, read, update, and delete data while running a program.
 
 
 # Using Technology
-JAVA, MySQL
+#### JAVA, MySQL
 
 
 # Database
 By suing mySQL, it is able to store the data from java program.
-The spreadsheet is created on SQL Querry table.
+<br>The spreadsheet is created on SQL Querry table.
 ![guide1](./img/db.png)
 
 
